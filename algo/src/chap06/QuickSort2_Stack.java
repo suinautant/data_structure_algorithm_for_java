@@ -11,6 +11,7 @@ public class QuickSort2_Stack {
 		lstack.push(left);
 		rstack.push(right);
 
+		// lstack이 비어있지 않다면 while()
 		while (lstack.isEmpty() != true) {
 			// stack에 쌓여 있는 전체 목록 출력
 			System.out.println();
@@ -24,7 +25,7 @@ public class QuickSort2_Stack {
 			int pr = right = rstack.pop();
 			int x = a[(left + right) / 2];
 
-			// 부할 된 배열 출력
+			// 분할된 배열 출력
 			printSplit(a, left, right);
 			// pr과 pl이 서로 교차 되지 않는 범위까지 반복
 			do {
