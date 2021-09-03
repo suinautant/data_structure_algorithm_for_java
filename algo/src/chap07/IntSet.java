@@ -1,10 +1,11 @@
 package chap07;
 
 public class IntSet {
-	private int max;
-	private int num;
-	private int[] set;
+	private int max; // 배열 최대 값
+	private int num; // 요소 수
+	private int[] set; // 배열
 
+	// 생성자
 	public IntSet(int capacity) {
 		max = capacity;
 		num = 0;
@@ -23,6 +24,8 @@ public class IntSet {
 		return num;
 	}
 
+	// 값이 있으면 index 반환
+	// 없으면 -1 반환
 	public int indexOf(int n) {
 		for (int i = 0; i < num; i++)
 			if (set[i] == n)
@@ -30,10 +33,12 @@ public class IntSet {
 		return -1;
 	}
 
+	// 값을 포함하고 있는지 여부
 	public boolean contains(int n) {
 		return (indexOf(n) != -1) ? true : false;
 	}
 
+	// 배열에 값 추가
 	public boolean add(int n) {
 		if (num >= max || contains(n) == true)
 			return false;
@@ -43,6 +48,7 @@ public class IntSet {
 		}
 	}
 
+	// 값 삭제
 	public boolean remove(int n) {
 		int idx;
 		if (num <= 0 || (idx = indexOf(n)) == -1)
@@ -53,6 +59,8 @@ public class IntSet {
 		}
 	}
 
+	// s배열에 값 복사
+	// 작은 배열의 크기만큼 복사
 	public void copyTo(IntSet s) {
 		int n = (s.max < num) ? s.max : num;
 		for (int i = 0; i < n; i++)
@@ -60,6 +68,8 @@ public class IntSet {
 		s.num = n;
 	}
 
+	// s배열로부터 값 복사
+	// 작은 배열의 크기만큼 복사
 	public void copyFrom(IntSet s) {
 		int n = (max < s.num) ? max : s.num;
 		for (int i = 0; i < n; i++)
@@ -96,14 +106,14 @@ public class IntSet {
 			add(s2.set[i]);
 		}
 	}
-	
+
+	// 문자화
 	public String toString() {
 		StringBuffer temp = new StringBuffer("{ ");
-		for (int i = 0; i < num; i++) 
+		for (int i = 0; i < num; i++)
 			temp.append(set[i] + " ");
 		temp.append("}");
 		return temp.toString();
 	}
 
-	// end of class
 }
