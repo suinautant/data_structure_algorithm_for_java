@@ -116,4 +116,21 @@ public class IntSet {
 		return temp.toString();
 	}
 
+	// 비었는지 확인
+	public boolean isEmpty() {
+		return (num == 0) ? true : false;
+	}
+
+	// 가득 찼는지 확인
+	public boolean isFull() {
+		return (num == max) ? true : false;
+	}
+
+	// 배열 요소 전체 삭제
+	public void clear() {
+		for (int i = max - 1; i >= 0; i--) {
+			remove(set[i]);
+		}
+	}
+
 }
