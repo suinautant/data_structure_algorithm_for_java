@@ -43,25 +43,51 @@ public class LinkedListTester {
 			}
 		}
 
+		/*
 		public static final Comparator<Data> NO_ORDER = new NoOrderComparator();
 		private static class NoOrderComparator implements Comparator<Data> {
 			public int compare(Data d1, Data d2) {
 				return (d1.no > d2.no) ? 1 : (d1.no < d2.no) ? -1 : 0;
 			}
 		}
-
+		
 		public static final Comparator<Data> NAME_ORDER = new NameOrderComparator();
 		private static class NameOrderComparator implements Comparator<Data> {
 			public int compare(Data d1, Data d2) {
 				return d1.name.compareTo(d2.name);
 			}
 		}
+		*/
 	}
 
+	// 익명 객체 구현 
+	public static final Comparator<Data> NO_ORDER = new Comparator<Data>() {
+		@Override
+		public int compare(Data d1, Data d2) {
+			return (d1.no > d2.no) ? 1 : (d1.no < d2.no) ? -1 : 0;
+		}
+	};
+
+	public static final Comparator<Data> NAME_ORDER = new Comparator<Data>() {
+		@Override
+		public int compare(Data d1, Data d2) {
+			return d1.name.compareTo(d2.name);
+		}
+	};
+
 	enum Menu {
-		ADD_FIRST("머리에 노드를 삽입"), ADD_LAST("꼬리에 노드를 삽입"), RMV_FIRST("머리 노드를 삭제"), RMV_LAST("꼬리 노드를 삭제"),
-		RMV_CRNT("선택 노드를 삭제"), CLEAR("모든 노드를 삭제"), SEARCH_NO("번호로 검색"), SEARCH_NAME("이름으로 검색"), NEXT("선택 노드로 이동"),
-		PRINT_CRNT("선택 노드를 출력"), DUMP("모든 노드를 출력"), TERMINATE("종료");
+		ADD_FIRST("머리에 노드를 삽입"),
+		ADD_LAST("꼬리에 노드를 삽입"),
+		RMV_FIRST("머리 노드를 삭제"),
+		RMV_LAST("꼬리 노드를 삭제"),
+		RMV_CRNT("선택 노드를 삭제"),
+		CLEAR("모든 노드를 삭제"),
+		SEARCH_NO("번호로 검색"),
+		SEARCH_NAME("이름으로 검색"),
+		NEXT("선택 노드로 이동"),
+		PRINT_CRNT("선택 노드를 출력"),
+		DUMP("모든 노드를 출력"),
+		TERMINATE("종료");
 
 		private final String message;
 
@@ -146,8 +172,10 @@ public class LinkedListTester {
 				list.removeCurrentNode();
 				break;
 			case SEARCH_NO:
-				temp.ScanData(menu.getMessage(), Data.NO);
-				ptr = list.search(temp, Data.NO_ORDER);
+				 temp.ScanData(menu.getMessage(), Data.NO);
+				// ptr = list.search(temp, Data.NO_ORDER);
+				// Comparator 익명 객체화와 클래스 분리
+				ptr = list.search(temp, NO_ORDER);
 				if (ptr == null)
 					System.out.println("그 번호의 데이터가 없습니다.");
 				else
@@ -155,7 +183,9 @@ public class LinkedListTester {
 				break;
 			case SEARCH_NAME:
 				temp.ScanData(menu.getMessage(), Data.NAME);
-				ptr = list.search(temp, Data.NAME_ORDER);
+				// ptr = list.search(temp, Data.NAME_ORDER);
+				// Comparator 익명 객체화와 클래스 분리
+				ptr = list.search(temp, NAME_ORDER);
 				if (ptr == null)
 					System.out.println("그 이름의 데이터가 없습니다.");
 				else
