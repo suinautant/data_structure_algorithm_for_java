@@ -2,7 +2,7 @@ package chap09;
 
 import java.util.Comparator;
 
-public class DbLinkedList<E> {
+public class DblLinkedList<E> {
 	// 노드
 	class Node<E> {
 		private E data;
@@ -27,7 +27,7 @@ public class DbLinkedList<E> {
 	private Node<E> crnt;
 
 	// 생성자
-	public DbLinkedList() {
+	public DblLinkedList() {
 		head = crnt = new Node<E>();
 	}
 
