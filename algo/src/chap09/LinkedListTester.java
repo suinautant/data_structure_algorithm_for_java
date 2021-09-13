@@ -172,7 +172,7 @@ public class LinkedListTester {
 				list.removeCurrentNode();
 				break;
 			case SEARCH_NO:
-				 temp.ScanData(menu.getMessage(), Data.NO);
+				temp.ScanData(menu.getMessage(), Data.NO);
 				// ptr = list.search(temp, Data.NO_ORDER);
 				// Comparator 익명 객체화와 클래스 분리
 				ptr = list.search(temp, NO_ORDER);
